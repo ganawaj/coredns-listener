@@ -3,7 +3,15 @@
 [![pipeline status](https://git.juanah.cloud/ganawa/coredns-listener/badges/master/pipeline.svg)](https://git.juanah.cloud/ganawa/coredns/-/commits/master)
 
 A webhook listener that updates Corefile & RFC1035 DB files whenever a push is made to
-a repository. 
+a repository. Currently only supports Gitlab.
+
+## Workflow
+
+When a POST request is recieved at the listener, here is th workflow that is followed:
+1. The listener validates that 'X-GITLAB-TOKEN' header matches the configured 'GITLAB_SECRET_TOKEN'
+2. The listener ensures that 'X-Gitlab-Event' header is "Push hook"
+3. The repository that sent the hook is cloned to a temp directory using the provided credentials
+
 
 ## Usage
 
