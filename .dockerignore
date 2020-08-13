@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+.git
+.gitignore
+.github
+.gitattributes
+READMETEMPLATE.md
+README.md
+/root/tmp/
+/root/

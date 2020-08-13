@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  web:
+    build: ./
+    container_name: coredns-listener
+    env_file:
+      - coredns-listener.env
+    ports:
+      - "5000:5000"
+    volumes:
+      - ''

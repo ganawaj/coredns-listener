@@ -197,3 +197,6 @@ pip-selfcheck.json
 !/root/tmp/
 !/root/
 !/coredns-listener.env
+/coredns-listener.env
+/run.py
+/root/
