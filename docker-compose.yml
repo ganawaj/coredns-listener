@@ -7,5 +7,3 @@ services:
       - coredns-listener.env
     ports:
       - "5000:5000"
-    volumes:
-      - ''
