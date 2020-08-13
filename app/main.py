@@ -11,16 +11,9 @@ app.config['DEBUG'] = True
 GITLAB_USERNAME = environ['GITLAB_USERNAME']
 GITLAB_PASSWORD = environ['GITLAB_PASSWORD']
 GITLAB_SECRET_TOKEN = environ['GITLAB_SECRET_TOKEN']
-COREDNS_FILE_MAP = {}
 
-if "DEBUG" in environ:
-    GIT_TEMP_REPO = Path("C:\\Users\\Ganawa\\PycharmProjects\\coredns-listener\\root\\tmp\\repos")
-    COREDNS_FILE_MAP['primary'] = Path("C:\\Users\\Ganawa\\PycharmProjects\\coredns-listener\\root\\etc\\coredns")
-
-else:
-    GIT_TEMP_REPO = Path('/tmp/repos')
-    with open("file_map.json", "r") as json_file:
-        COREDNS_FILE_MAP = json.load(json_file)
+GIT_TEMP_REPO = Path('/tmp/repos') if "GIT_TEMP_REPO" not in environ else environ['GIT_TEMP_REPO']
+COREDNS_FILE_MAP = json.loads(environ['COREDNS_FILE_MAP'])
 
 
 def repo_exist(directory):
