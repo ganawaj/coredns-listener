@@ -37,7 +37,7 @@ RUN chown -R listener:listener $FLASK_HOME
 # volume for coredns
 RUN mkdir /etc/coredns
 RUN chown -R listener:listener /etc/coredns
-VOLUME /etc/coredns
+#VOLUME /etc/coredns
 
 # volume for temporary directory
 RUN mkdir /tmp/repos
