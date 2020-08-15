@@ -7,3 +7,5 @@ services:
       - coredns-listener.env
     ports:
       - "5000:5000"
+    volumes:
+      - "/servers/coredns/primary:/etc/coredns:z"
