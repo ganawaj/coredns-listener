@@ -87,10 +87,6 @@ def update_records():
         mapped_dir_full_path = repo_dir.joinpath(mapped_directory)
         for files in mapped_dir_full_path.iterdir():
 
-            # ignore hidden files
-            if not files.suffix:
-                continue
-
             # don't copy directories
             if not files.is_file():
                 continue
