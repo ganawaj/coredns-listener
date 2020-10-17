@@ -1,4 +1,4 @@
-# [ganawaj/coredns-listener](https://git.juanah.cloud/ganawa/coredns-listener)
+# [ganawaj/coredns-listener](https://www.github.com/ganawaj/coredns-listener)
 
 [![pipeline status](https://git.juanah.cloud/ganawa/coredns-listener/badges/master/pipeline.svg)](https://git.juanah.cloud/ganawa/coredns/-/commits/master)
 
