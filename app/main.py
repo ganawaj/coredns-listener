@@ -74,7 +74,11 @@ def update_records():
             request_json['project']['git_http_url'][:8] + git_login + request_json['project']['git_http_url'][8:]
 
         # Clone the repo
-        Repo.clone_from(repo_login, str(repo_dir))
+        try:
+            Repo.clone_from(repo_login, str(repo_dir))
+
+        except exc.GitCommandError:
+            abort(400, description='Git command error: check username/password of git user')
 
     else:
 
