@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify, abort
 import json
+import filecmp
 from shutil import copy
 from pathlib import Path
 from os import environ
@@ -12,7 +13,7 @@ GITLAB_USERNAME = environ['GITLAB_USERNAME']
 GITLAB_PASSWORD = environ['GITLAB_PASSWORD']
 GITLAB_SECRET_TOKEN = environ['GITLAB_SECRET_TOKEN']
 
-GIT_TEMP_REPO = Path('/tmp/repos') if "GIT_TEMP_REPO" not in environ else environ['GIT_TEMP_REPO']
+GIT_TEMP_REPO = Path('/tmp/repos') if "GIT_TEMP_REPO" not in environ else Path(environ['GIT_TEMP_REPO'])
 COREDNS_FILE_MAP = json.loads(environ['COREDNS_FILE_MAP'])
 
 
@@ -85,6 +86,15 @@ def update_records():
 
         # get full path of repo path
         mapped_dir_full_path = repo_dir.joinpath(mapped_directory)
+
+        dir_file_comparison = filecmp.dircmp(
+            mapped_dir_full_path,
+            COREDNS_FILE_MAP[mapped_directory]
+        ).right_only
+
+        for file in dir_file_comparison:
+            Path(COREDNS_FILE_MAP[mapped_directory]).joinpath(file).unlink()
+
         for files in mapped_dir_full_path.iterdir():
 
             # don't copy directories
