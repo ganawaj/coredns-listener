@@ -102,7 +102,7 @@ docker create \
   -p 5000:5000 \
   -v /path/to/coredns/config:/etc/coredns \
   --restart unless-stopped \
-  ganawaj/coredns-listener
+  ganawa/coredns-listener
 ```
 
 
@@ -113,7 +113,7 @@ docker create \
 version: "2.1"
 services:
   listener:
-    image: ganawaj/coredns-listener
+    image: ganawa/coredns-listener
     container_name: coredns-listener
     environment:
       - PUID=1000
